@@ -1,16 +1,20 @@
 import React from 'react';
 import Proposals from './components/Cards/Proposals';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Marginals from './components/shared/Marginals';
 import ProposalPage from './pages/ProposalPage';
-import { makeStyles } from '@mui/styles';
+import RoomsPage from './pages/RoomsPage';
 
 const App = () => {
   return (
     <Router>
       <Marginals>
-        <ProposalPage />
+        <Routes>
+          <Route path="/">Home</Route>
+          <Route path="/rooms" element={<RoomsPage />} />
+          <Route path="/proposals" element={<ProposalPage />} />
+        </Routes>
       </Marginals>
     </Router>
   );

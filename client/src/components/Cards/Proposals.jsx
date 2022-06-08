@@ -15,7 +15,7 @@ const Proposals = () => {
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             Proposal 1
           </Typography>
           <Typography variant="body2" color="text.secondary">
