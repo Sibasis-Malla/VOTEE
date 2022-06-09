@@ -6,6 +6,7 @@ import RoomsPage from './pages/RoomsPage';
 import CreateProposal from './components/Forms/CreateProposal';
 import StickyFooter from './components/marginals/Footer';
 import CreateRoom from './components/Forms/CreateRoom';
+import AdminPage from './pages/AdminPage';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/proposals" element={<ProposalPage />} />
           <Route path="/proposals/create" element={<CreateProposal />} />
           <Route path="/rooms/create" element={<CreateRoom />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </StickyFooter>
     </Router>
