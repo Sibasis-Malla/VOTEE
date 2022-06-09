@@ -3,6 +3,7 @@ import Navbar from '../marginals/Navbar';
 
 import { Container } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import StickyFooter from '../marginals/Footer';
 
 const Marginals = ({ children }) => {
   const classes = useStyles();
@@ -13,6 +14,7 @@ const Marginals = ({ children }) => {
         {children}
       </Container>
       <footer className={classes.footer}>Made with ❤ by Team Invincible</footer>
+      <StickyFooter />
     </>
   );
 };

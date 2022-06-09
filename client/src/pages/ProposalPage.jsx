@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Typography, Stack } from '@mui/material';
 
@@ -14,9 +15,11 @@ const ProposalPage = () => {
         <Typography variant="h5" className={classes.text} component="div">
           Proposals
         </Typography>
-        <Button variant="contained" startIcon={<Add />}>
-          Create a Proposal
-        </Button>
+        <Link style={{ textDecoration: 'none' }} to="/proposals/create">
+          <Button variant="contained" startIcon={<Add />}>
+            Create a Proposal
+          </Button>
+        </Link>
       </Stack>
       <div className={classes.container}>
         <Proposals />
@@ -33,7 +36,7 @@ export default ProposalPage;
 
 const useStyles = makeStyles(() => ({
   header: {
-    marginTop: '150px',
+    marginTop: '50px',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -48,5 +51,6 @@ const useStyles = makeStyles(() => ({
     rowGap: '20px',
     columnGap: '20px',
     margin: '30px 2%',
+    marginBottom: '100px',
   },
 }));
