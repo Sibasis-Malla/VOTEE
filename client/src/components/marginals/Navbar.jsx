@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import Web3Context from '../../context';
 
 import { Typography, Button } from '@mui/material';
@@ -8,8 +8,7 @@ import { Add } from '@mui/icons-material';
 
 function Navbar() {
   const classes = useStyles();
- // const [Currentaccount, setCurrentAccount] = useState("");
- const children = useContext(Web3Context);
+  const children = useContext(Web3Context);
 
   return (
     <div className={classes.root}>
@@ -24,16 +23,14 @@ function Navbar() {
             Rooms
           </Typography>
         </Link>
-        <Link className={classes.tabLink} to="/rooms">
-          <Button
-            variant="contained"
-            className={classes.tab}
-            startIcon={<Add />}
-           onClick={children.connectWallet}
-          >
-            Connect to Wallet
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          className={classes.tab}
+          startIcon={<Add />}
+          onClick={children.connectWallet}
+        >
+          Connect to Wallet
+        </Button>
       </div>
     </div>
   );

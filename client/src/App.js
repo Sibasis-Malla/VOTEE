@@ -1,4 +1,4 @@
-import React, { useEffect,useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProposalPage from './pages/ProposalPage';
@@ -17,16 +17,14 @@ import '@fontsource/roboto/700.css';
 
 const App = () => {
   window.ethereum.on('accountsChanged', function (accounts) {
-    setTimeout(window.location.reload(false),1000)
-  })
+    setTimeout(window.location.reload(false), 1000);
+  });
 
-//CheckIfWallet is Connectd
-const {checkIfWalletIsConnected} = useContext(Web3Context);
-useEffect(()=>{
-  checkIfWalletIsConnected()
-},[])
-
-
+  //CheckIfWallet is Connectd
+  const { checkIfWalletIsConnected } = useContext(Web3Context);
+  useEffect(() => {
+    checkIfWalletIsConnected();
+  },[]);
 
   return (
     <Router>
@@ -34,8 +32,8 @@ useEffect(()=>{
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/rooms" element={<RoomsPage />} />
-          <Route path="/proposals" element={<ProposalPage />} />
-          <Route path="/proposals/create" element={<CreateProposal />} />
+          <Route path="/:room/proposals" element={<ProposalPage />} />
+          <Route path="/:room/proposals/create" element={<CreateProposal />} />
           <Route path="/rooms/create" element={<CreateRoom />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
