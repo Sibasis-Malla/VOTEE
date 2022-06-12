@@ -23,8 +23,8 @@ const App = () => {
   //CheckIfWallet is Connectd
   const { checkIfWalletIsConnected } = useContext(Web3Context);
   useEffect(() => {
-     checkIfWalletIsConnected();
-  },[]);
+    checkIfWalletIsConnected();
+  }, []);
 
   return (
     <Router>
@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/rooms" element={<RoomsPage />} />
           <Route path="/:room/proposals" element={<ProposalPage />} />
-          <Route path="/:room/create" element={<CreateProposal />} />
+          <Route path="/:room/proposals/create" element={<CreateProposal />} />
           <Route path="/rooms/create" element={<CreateRoom />} />
           <Route path="/:room/admin" element={<AdminPage />} />
         </Routes>
