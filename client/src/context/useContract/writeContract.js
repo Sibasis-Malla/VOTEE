@@ -1,43 +1,56 @@
 import { useState } from "react";
 
-const WriteContract = (instance, admin) => {
+const WriteContract = (instance, currentAccount) => {
   const [currentVoter, setCurrentVoter] = useState(null);
+  const createRoom = async (instance,id,acc)=>{
+    console.log(instance)
+    await instance.methods.createRooms(id).send({from:acc});
+    alert("Room Created Succesfully!")
 
-  const addVoter = async (address) => {
+  }
+  const deleteRoom = async (id)=>{
+    await instance.methods.deleteRoom(id).send({from:currentAccount});
+
+  }
+
+  const addVoter = async (address,id) => {
     setCurrentVoter(address);
-    await instance.methods.addVoter(address).send({ from: admin });
+    await instance.methods.addVoter(address,id).send({ from: currentAccount });
   };
-  const removeVoter = async (address) => {
+  const removeVoter = async (address,id) => {
     setCurrentVoter(address);
-    await instance.methods.deleteVoter(address).send({ from: admin });
+    await instance.methods.deleteVoter(address,id).send({ from: currentAccount });
   };
-  const addProposal = async (content) => {
-    await instance.methods.addProposal(content).send({ from: admin });
+  const addProposal = async (content,id) => {
+    await instance.methods.addProposal(content,id).send({ from: currentAccount });
   };
-  const removeProposal = async (content) => {
-    await instance.methods.deleteProposal(content).send({ from: admin });
+  const removeProposal = async (content,id) => {
+    await instance.methods.deleteProposal(content,id).send({ from: currentAccount });
   };
-  const vote = async (id) => {
-    await instance.methods.vote(id).send({ from: admin });
+  const vote = async (id,roomId) => {
+    await instance.methods.vote(id,roomId).send({ from: currentAccount });
   };
-  const startProposalSession = async () => {
-    await instance.methods.startProposalRegistration().send({ from: admin });
+  const startProposalSession = async (id) => {
+    await instance.methods.startProposalRegistration(id).send({ from: currentAccount });
   };
-  const endProposalSession = async () => {
-    await instance.methods.endProposalRegistration().send({ from: admin });
+  const endProposalSession = async (id) => {
+    await instance.methods.endProposalRegistration(id).send({ from: currentAccount });
   };
-  const startVotingSession = async () => {
-    await instance.methods.startVotingSession().send({ from: admin });
+  const startVotingSession = async (id) => {
+    await instance.methods.startVotingSession(id).send({ from: currentAccount });
   };
-  const endVotingSession = async () => {
-    await instance.methods.endVotingSession().send({ from: admin });
+  const endVotingSession = async (id) => {
+    await instance.methods.endVotingSession(id).send({ from: currentAccount });
   };
-  const resetVotingSession = async () => {
-    await instance.methods.resetVotingSession().send({ from: admin });
+  const resetVotingSession = async (id) => {
+    await instance.methods.resetVotingSession(id).send({ from: currentAccount });
   };
 
   return {
+    
     currentVoter,
+    createRoom,
+    deleteRoom,
     addVoter,
     removeVoter,
     startProposalSession,

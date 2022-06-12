@@ -32,7 +32,7 @@ export default function StickyFooter({ children }) {
               : theme.palette.grey[800],
         }}
       >
-        <Container maxWidth="sm">Made with ❤ by Team Invincible</Container>
+        <Container maxWidth="sm">Made with ❤ by Team StarFox</Container>
       </Box>
     </Box>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Web3 from "web3";
 import WriteContract from "./writeContract";
 import ReadContract from "./readContract";
@@ -12,6 +12,8 @@ const useContract = (instance, admin) => {
   const {
     state,
     currentVoter,
+    createRoom,
+    deleteRoom,
     addVoter,
     removeVoter,
     startProposalSession,
@@ -24,9 +26,7 @@ const useContract = (instance, admin) => {
     vote,
   } = WriteContract(instance, admin);
 
-  const { count, whiteList, getProposals, countVoters, getWinningProposal } = ReadContract(
-    instance
-  );
+  const { count, Rooms,RoomwhiteList, getProposals, countVoters, getWinningProposal } = ReadContract(instance);
   const [transactionStatus, setTransactionStatus] = useState({
     status: TRANSACTION_STATUS.NIL,
     event: null,
@@ -105,11 +105,11 @@ const useContract = (instance, admin) => {
       })
   };
 
-  useEffect(() => {
-    subscribeEvents();
-    getStatus();
-    countVoters();
-  }, [instance]);
+  // useEffect(() => {
+  //   subscribeEvents();
+  //   getStatus();
+  //   countVoters();
+  // }, [instance]);
 
   return useMemo(() => {
     return {
@@ -119,9 +119,13 @@ const useContract = (instance, admin) => {
       count,
       eventTxHash,
       toast,
-      whiteList,
+      currentVoter,
+      Rooms,
+      RoomwhiteList,
       getProposals,
       getWinningProposal,
+      createRoom,
+      deleteRoom,
       addVoter,
       removeVoter,
       startProposalSession,
@@ -133,6 +137,6 @@ const useContract = (instance, admin) => {
       removeProposal,
       vote,
     };
-  }, [status, event, transactionStatus, count, eventTxHash, state, toast]);
+  }, [status, event, transactionStatus, count, currentVoter,eventTxHash, state, toast]);
 };
 export default useContract;

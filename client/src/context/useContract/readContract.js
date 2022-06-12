@@ -3,25 +3,49 @@ import { useState } from "react";
 const ReadContract = (instance) => {
   const [count, setCount] = useState(0);
 
-  const countVoters = () => {
+  const countVoters = (id) => {
     if (!instance) {
-      return false;
+      return null;
     }
-    instance.methods.votersCount().call().then(setCount);
+    instance.methods.RoomList(id).votersCount().call().then(setCount);
   };
+  const Rooms= async(instance)=>{
+    //console.log(instance)
+    if(!instance) {
+      return null;
+    }
+    const rooms = await instance.methods.TotalRooms().call();
+    return await Promise.all(
+      rooms.map(async (roomId) => {
+        const {
+          id,
+          isActive,
+          roomOwner
+        } = await instance.methods.RoomList(roomId).call();
 
-  const whiteList = async (instance) => {
+        return {
+          id:id,
+          isActive:isActive,
+          roomOwner:roomOwner
+        };
+      })
+    ).then((values) => values.filter((value) => value.isActive));
+
+  }
+
+  const RoomwhiteList = async (instance,roomId) => {
     if (!instance) {
       return false;
     }
-    const voters = await instance.methods.getVoters().call();
+    
+    const Voters = await instance.methods.getVoters(roomId).call();
     return await Promise.all(
-      voters.map(async (address) => {
+      Voters.map(async (address) => {
         const {
           isRegistered,
           _address,
           hasVoted,
-        } = await instance.methods.whiteList(address).call();
+        } = await instance.methods.RoomList(roomId).whiteList(address).call();
 
         return {
           address: _address,
@@ -32,35 +56,35 @@ const ReadContract = (instance) => {
     ).then((values) => values.filter((value) => value.isWhitelisted));
   };
 
-  const getProposals = async (instance) => {
+  const getProposals = async (instance,roomId) => {
     if (!instance) {
       return false;
     }
-    let propals = [];
-    const proposalCount = await instance.methods.proposalIds().call();
+    let roomProposals = [];
+    const proposalCount = await instance.methods.RoomList(roomId).proposalIds().call();
     return new Promise(async (resolve) => {
       for (let i = 0; i <= proposalCount; i++) {
-        const proposal = await instance.methods.proposals(i).call();
+        const proposal = await instance.methods.RoomList(roomId).proposals(i).call();
         if (!!proposal.description.length) {
-          propals.push(proposal);
+          roomProposals.push(proposal);
         }
       }
-      resolve(propals);
+      resolve(roomProposals);
     }).then((values) => values);
   };
 
-  const getWinningProposal = async (instance) => {
-    const proposals = await getProposals(instance);
+  const getWinningProposal = async (instance,roomId) => {
+    const proposals = await getProposals(instance,roomId);
     proposals.sort((a,b) => b.voteCount - a.voteCount)
     return proposals[0];
   }
 
   return {
     count,
-    whiteList,
+    Rooms,
+    RoomwhiteList,
     getProposals,
     countVoters,
-    getProposals,
     getWinningProposal,
   };
 };

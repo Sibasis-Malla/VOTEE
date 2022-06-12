@@ -1,55 +1,120 @@
-import React, { useMemo, useState } from "react";
-import VotingContract from "../contracts/Voting.json";
-import getWeb3 from "./getWeb3";
-import { Web3Context } from ".";
+import React, { useState } from "react";
+import Voting from "../contracts/Voting.json";
+import { Web3Context } from "./index";
+import Web3 from "web3";
 
-const { Provider } = Web3Context;
+
 
 const Web3Provider = ({ children }) => {
-  const [state, setState] = useState({
-    web3: null,
+  const [account, setAccount] = useState({
     accounts: null,
-    contract: null,
-    admin: null,
-    endVoting: false,
+    currentAccount: null,
+   
   });
+  const [Contract,setContract] = useState("")
 
-  const connectWeb3 = new Promise(async (resolve) => {
-    const web3 = await getWeb3();
-    resolve(web3);
-  });
+  // const connectWeb3 = new Promise(async (resolve) => {
+  //   const web3 = await getWeb3();
+  //   resolve(web3);
+  // });
+      //Connect Wallet utility
+      const connectWallet = async () => {
+        try {
+          const { ethereum } = window;
+    
+          if (!ethereum) {
+            alert("Get MetaMask!");
+            return;
+          }
+          const accounts = await ethereum.request({
+            method: "eth_requestAccounts",
+          });
+        
+  
+            
+            
+          console.log("Connected", accounts[0]);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
-  const connectBlockchain = (web3) =>
-    new Promise(async (resolve) => {
-      const accounts = await web3.eth.getAccounts();
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = VotingContract.networks[networkId];
+      const checkIfWalletIsConnected = async () => {
+        const { ethereum } = window;
+    
+        if (!ethereum) {
+          console.log("Make sure you have metamask!");
+          return;
+        } else {
+          console.log("We have the ethereum object");
+        }
+    
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        const chain = await window.ethereum.request({ method: "eth_chainId" });
+        console.log("chain ID:", chain);
+          
+        if (accounts.length !== 0) {
+          const account = accounts[0];
+          console.log("Found an authorized account:", account);
+          setAccount({
+            accounts:accounts,
+            currentAccount:accounts[0],
 
-      const instance = new web3.eth.Contract(
-        VotingContract.abi,
-        deployedNetwork && deployedNetwork.address
-      );
-      instance && console.log("connected to blockchain");
-      const status = await instance.methods.status().call() == 4;
-      console.log('session ended :', status);
-      resolve({ web3, instance, accounts, status });
-    });
+          })
+          getContract();
+  
+       
+        } else {
+          console.log("No authorized account found");
+        }
+      };
+   const getContract =  ()=>{
+    //console.log(provider,signer);
+    var web3 = new Web3(window.ethereum);
+   
+    //const networkId = await web3.eth.net.getId();
+    const deployedNetwork = Voting.networks[3];
 
-  const connect = () => {
-    connectWeb3
-      .then(connectBlockchain, console.error)
-      .then(({ web3, instance, accounts, status }) => {
-        setState({ web3, accounts, contract: instance, admin: accounts[0], endVoting: status });
-      });
-  };
+    const instance = new web3.eth.Contract(
+      Voting.abi,
+      deployedNetwork && deployedNetwork.address
+    );
+    //console.log(account.currentAccount)
+    
+     //console.log(instance)
+     setContract(instance)
+     
+   }
+   
+        
+  // const connectBlockchain = (web3) =>
+  //   new Promise(async (resolve) => {
+  //     const accounts = await web3.eth.getAccounts();
+  //     const networkId = await web3.eth.net.getId();
+  //     const deployedNetwork = Voting.networks[networkId];
 
-  const value = useMemo(() => {
-    return {
-      connectWeb3: connect,
-      instance: state.contract,
-      ...state,
-    };
-  }, [state]);
-  return <Provider value={value}>{children}</Provider>;
+  //     const instance = new web3.eth.Contract(
+  //       Voting.abi,
+  //       deployedNetwork && deployedNetwork.address
+  //     );
+  //     instance && console.log("connected to blockchain");
+  //     const status = await instance.methods.status().call() == 4;
+  //     console.log('session ended :', status);
+  //     resolve({ web3, instance, accounts, status });
+  //   });
+  
+
+
+  
+
+
+  // const value = useMemo(() => {
+  //   return {
+  //     connectWeb3: connect,
+  //     instance: state.contract,
+  //     ...state,
+  //   };
+  // }, [state]);
+  return <Web3Context.Provider value={{connectWallet,checkIfWalletIsConnected,account,Contract}}>{children}</Web3Context.Provider>;
 };
 export default Web3Provider;

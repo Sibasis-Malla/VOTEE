@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useContext} from 'react';
+import Web3Context from '../../context';
 
 import { Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
@@ -7,6 +8,8 @@ import { Add } from '@mui/icons-material';
 
 function Navbar() {
   const classes = useStyles();
+ // const [Currentaccount, setCurrentAccount] = useState("");
+ const children = useContext(Web3Context);
 
   return (
     <div className={classes.root}>
@@ -26,6 +29,7 @@ function Navbar() {
             variant="contained"
             className={classes.tab}
             startIcon={<Add />}
+           onClick={children.connectWallet}
           >
             Connect to Wallet
           </Button>

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import Web3Provider from './context/Web3Provider';
 import { ThemeProvider } from '@mui/styles';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
@@ -11,9 +11,11 @@ let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 ReactDOM.render(
+  <Web3Provider>
   <ThemeProvider theme={theme}>
     <App />
   </ThemeProvider>,
+  </Web3Provider>,
   document.getElementById('root')
 );
 

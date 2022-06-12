@@ -10,11 +10,13 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const RoomCard = () => {
-  const classes = useStyles();
-  return (
+
+const RoomCard = (props) => {
+  const classes = useStyles(); 
+
+   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
+     <CardActionArea>
         <CardMedia
           component="img"
           height="140"
@@ -23,14 +25,10 @@ const RoomCard = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h6" sx={{ mb: 0 }} component="div">
-            Room 1
+            Room {props.id}
           </Typography>
           <Typography variant="body2" sx={{ mb: 1 }} color="text.secondary">
-            Created By: Sibasis Malla
-          </Typography>
-          <Typography variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-            ultricies eu felis id condimentum.
+            Created By: {props.roomOwner}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -44,11 +42,19 @@ const RoomCard = () => {
           Enter Room
         </Button>
       </CardActions>
-    </Card>
-  );
-};
+      </Card>
+      
+    )
+
+  }
+      
+
+
+
+
 
 export default RoomCard;
+
 
 const useStyles = makeStyles({
   button: {
@@ -58,3 +64,4 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 });
+
