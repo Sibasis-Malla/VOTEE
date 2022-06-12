@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import { Container, Typography } from '@mui/material';
 import Navbar from './Navbar';
 
 export default function StickyFooter({ children }) {
@@ -11,6 +11,7 @@ export default function StickyFooter({ children }) {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        backgroundColor: '#d4d8f0',
       }}
     >
       <CssBaseline />
@@ -24,15 +25,15 @@ export default function StickyFooter({ children }) {
         sx={{
           py: 3,
           px: 2,
-          mt: 'auto',
+          mt: 10,
+          mb: 0,
           textAlign: 'center',
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          backgroundColor: '#232946',
         }}
       >
-        <Container maxWidth="sm">Made with ❤ by Team StarFox</Container>
+        <Typography variant="body1" style={{ color: '#b8c1ec' }}>
+          Made with ❤ by Team StarFox
+        </Typography>
       </Box>
     </Box>
   );

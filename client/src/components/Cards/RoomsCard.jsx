@@ -1,4 +1,4 @@
-import React,{useState,useContext,useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {
   Button,
   CardActionArea,
@@ -10,21 +10,20 @@ import {
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Web3Context from '../../context';
-import DeleteIcon from '@mui/icons-material/Delete'
-
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const RoomCard = (props) => {
-  const classes = useStyles(); 
-  const [Currentaccount, setaccount] = useState("")
-  const {account} = useContext(Web3Context)
-  useEffect(()=>{
-    setaccount(account)
-    console.log(Currentaccount)
-  },[account])
+  const classes = useStyles();
+  const [Currentaccount, setaccount] = useState('');
+  const { account } = useContext(Web3Context);
+  useEffect(() => {
+    setaccount(account);
+    console.log(Currentaccount);
+  }, [account]);
 
-   return (
-    <Card sx={{ maxWidth: 345 }}>
-     <CardActionArea>
+  return (
+    <Card>
+      <CardActionArea>
         <CardMedia
           component="img"
           height="140"
@@ -32,10 +31,15 @@ const RoomCard = (props) => {
           alt="Cover Pic"
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" sx={{ mb: 0 }} component="div">
-            Room {props.id}
+          <Typography
+            gutterBottom
+            variant="h6"
+            sx={{ mb: 0, mr: 1 }}
+            component="div"
+          >
+            Room ID: {props.id}
           </Typography>
-                {props.roomOwner===Currentaccount? <DeleteIcon />:""}
+          {props.roomOwner === Currentaccount ? <DeleteIcon /> : ''}
           <Typography variant="body2" sx={{ mb: 1 }} color="text.secondary">
             Created By: {props.roomOwner}
           </Typography>
@@ -51,19 +55,11 @@ const RoomCard = (props) => {
           Enter Room
         </Button>
       </CardActions>
-      </Card>
-      
-    )
-
-  }
-      
-
-
-
-
+    </Card>
+  );
+};
 
 export default RoomCard;
-
 
 const useStyles = makeStyles({
   button: {
@@ -73,4 +69,3 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 });
-
