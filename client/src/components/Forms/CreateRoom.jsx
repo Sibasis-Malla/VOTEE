@@ -29,7 +29,7 @@ export default function CreateRoom() {
 
   //const {account,checkIfWalletIsConnected} = useContext(Web3Context);
 
-  const { createRoom } = useContract(Contract, account.currentAccount);
+  const { createRoom } = useContract(Contract, account);
 
   return (
     <Container component="main" maxWidth="xs">

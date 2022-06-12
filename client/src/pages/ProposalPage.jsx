@@ -10,18 +10,25 @@ import Proposals from '../components/Cards/Proposals';
 const ProposalPage = () => {
   const classes = useStyles();
   let { room } = useParams();
-  console.log(room);
+  //console.log(room);
+  
   return (
     <>
       <Stack direction="row" spacing={2} className={classes.header}>
         <Typography variant="h5" className={classes.text} component="div">
           Proposals
         </Typography>
-        <Link style={{ textDecoration: 'none' }} to="/proposals/create">
+        <Link style={{ textDecoration: 'none' }} to={`/${room}/create`}>
           <Button variant="contained" startIcon={<Add />}>
             Create a Proposal
           </Button>
-        </Link>
+          </Link>
+          <Link style={{ textDecoration: 'none' }} to={`/${room}/admin`}>
+          <Button variant="contained" >
+            Admin
+          </Button>
+          </Link>
+     
       </Stack>
       <div className={classes.container}>
         <Proposals />

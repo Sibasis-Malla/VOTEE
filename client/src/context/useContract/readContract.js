@@ -39,13 +39,18 @@ const ReadContract = (instance) => {
     }
     
     const Voters = await instance.methods.getVoters(roomId).call();
+    //const res = await instance.methods.RoomList(roomId).call();
+    //console.log(res.voters)
     return await Promise.all(
+     
       Voters.map(async (address) => {
         const {
+          
           isRegistered,
           _address,
           hasVoted,
-        } = await instance.methods.RoomList(roomId).whiteList(address).call();
+        } = await instance.methods.getWhiteList(roomId,address).call();
+        //console.log(_address)
 
         return {
           address: _address,
@@ -78,6 +83,22 @@ const ReadContract = (instance) => {
     proposals.sort((a,b) => b.voteCount - a.voteCount)
     return proposals[0];
   }
+  const getCurrentStatus = async(instance,roomId)=>{
+    if (!instance) {
+      return false;
+    }
+    const {status} = await instance.methods.RoomList(roomId).call()
+    return status;
+  }
+  const getVoters = async(instance,roomId)=>{
+    if (!instance) {
+      return false;
+     
+    }
+    const res = await instance.methods.getVoters(roomId).call()
+    //console.log(res)
+    return res;
+  }
 
   return {
     count,
@@ -86,6 +107,8 @@ const ReadContract = (instance) => {
     getProposals,
     countVoters,
     getWinningProposal,
+    getCurrentStatus,
+    getVoters
   };
 };
 export default ReadContract;

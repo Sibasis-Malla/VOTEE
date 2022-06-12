@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import {
   Button,
   CardActionArea,
@@ -9,10 +9,18 @@ import {
   CardMedia,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import Web3Context from '../../context';
+import DeleteIcon from '@mui/icons-material/Delete'
 
 
 const RoomCard = (props) => {
   const classes = useStyles(); 
+  const [Currentaccount, setaccount] = useState("")
+  const {account} = useContext(Web3Context)
+  useEffect(()=>{
+    setaccount(account)
+    console.log(Currentaccount)
+  },[account])
 
    return (
     <Card sx={{ maxWidth: 345 }}>
@@ -27,6 +35,7 @@ const RoomCard = (props) => {
           <Typography gutterBottom variant="h6" sx={{ mb: 0 }} component="div">
             Room {props.id}
           </Typography>
+                {props.roomOwner===Currentaccount? <DeleteIcon />:""}
           <Typography variant="body2" sx={{ mb: 1 }} color="text.secondary">
             Created By: {props.roomOwner}
           </Typography>

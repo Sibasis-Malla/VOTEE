@@ -74,6 +74,12 @@ contract  Voting  {
     function getVoters (uint256 roomId) public  view  returns ( address [] memory ) {
         return RoomList[roomId].voters;
     }
+    function getWhiteList (uint256 roomId,address _add) public  view  returns ( Voter memory ) {
+        return RoomList[roomId].whiteList[_add];
+    }
+     function getProposals (uint256 roomId,uint256 ind) public  view  returns ( Proposal memory ) {
+        return RoomList[roomId].proposals[ind];
+    }
 
     function getWinningProposal (uint256 roomId) public  view  returns (Proposal memory  proposal ){
 

@@ -15,7 +15,7 @@ const Web3Provider = ({ children }) => {
   //   resolve(web3);
   // });
   //Connect Wallet utility
-  const randomNumber = Math.round(Math.random() * 1000000);
+ // const randomNumber = Math.round(Math.random() * 1000000);
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -27,6 +27,11 @@ const Web3Provider = ({ children }) => {
       const accounts = await ethereum.request({
         method: 'eth_requestAccounts',
       });
+      setAccount({
+        accounts: accounts,
+        currentAccount: accounts[0],
+      });
+      
 
       // console.log('Connected', accounts[0]);
     } catch (error) {
@@ -47,14 +52,16 @@ const Web3Provider = ({ children }) => {
     const accounts = await ethereum.request({ method: 'eth_accounts' });
     const chain = await window.ethereum.request({ method: 'eth_chainId' });
     console.log('chain ID:', chain);
-
-    if (accounts.length !== 0) {
-      const account = accounts[0];
-      // console.log('Found an authorized account:', account);
-      setAccount({
+     setAccount({
         accounts: accounts,
         currentAccount: accounts[0],
       });
+
+    if (accounts.length !== 0) {
+      //const account = accounts[0];
+      // console.log('Found an authorized account:', account);
+     
+      
       getContract();
     } else {
       console.log('No authorized account found');
@@ -77,29 +84,6 @@ const Web3Provider = ({ children }) => {
     setContract(instance);
   };
 
-  // const connectBlockchain = (web3) =>
-  //   new Promise(async (resolve) => {
-  //     const accounts = await web3.eth.getAccounts();
-  //     const networkId = await web3.eth.net.getId();
-  //     const deployedNetwork = Voting.networks[networkId];
-
-  //     const instance = new web3.eth.Contract(
-  //       Voting.abi,
-  //       deployedNetwork && deployedNetwork.address
-  //     );
-  //     instance && console.log("connected to blockchain");
-  //     const status = await instance.methods.status().call() == 4;
-  //     console.log('session ended :', status);
-  //     resolve({ web3, instance, accounts, status });
-  //   });
-
-  // const value = useMemo(() => {
-  //   return {
-  //     connectWeb3: connect,
-  //     instance: state.contract,
-  //     ...state,
-  //   };
-  // }, [state]);
   return (
     <Web3Context.Provider
       value={{ connectWallet, checkIfWalletIsConnected, account, Contract }}

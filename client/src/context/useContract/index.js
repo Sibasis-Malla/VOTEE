@@ -26,7 +26,7 @@ const useContract = (instance, admin) => {
     vote,
   } = WriteContract(instance, admin);
 
-  const { count, Rooms,RoomwhiteList, getProposals, countVoters, getWinningProposal } = ReadContract(instance);
+  const { count, Rooms,RoomwhiteList, getProposals, countVoters, getWinningProposal,getCurrentStatus,getVoters } = ReadContract(instance);
   const [transactionStatus, setTransactionStatus] = useState({
     status: TRANSACTION_STATUS.NIL,
     event: null,
@@ -135,7 +135,9 @@ const useContract = (instance, admin) => {
       resetVotingSession,
       addProposal,
       removeProposal,
+      getCurrentStatus,
       vote,
+      getVoters
     };
   }, [status, event, transactionStatus, count, currentVoter,eventTxHash, state, toast]);
 };
