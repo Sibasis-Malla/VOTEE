@@ -9,6 +9,11 @@ import CreateRoom from './components/Forms/CreateRoom';
 import AdminPage from './pages/AdminPage';
 import Web3Context from './context';
 
+import HomePage from './pages/HomePage';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const App = () => {
   window.ethereum.on('accountsChanged', function (accounts) {
@@ -27,7 +32,7 @@ useEffect(()=>{
     <Router>
       <StickyFooter>
         <Routes>
-          <Route path="/">Home</Route>
+          <Route path="/" element={<HomePage />} />
           <Route path="/rooms" element={<RoomsPage />} />
           <Route path="/proposals" element={<ProposalPage />} />
           <Route path="/proposals/create" element={<CreateProposal />} />
