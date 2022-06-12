@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { Button, Typography, Stack } from '@mui/material';
 
@@ -9,6 +9,8 @@ import Proposals from '../components/Cards/Proposals';
 
 const ProposalPage = () => {
   const classes = useStyles();
+  let { room } = useParams();
+  console.log(room);
   return (
     <>
       <Stack direction="row" spacing={2} className={classes.header}>

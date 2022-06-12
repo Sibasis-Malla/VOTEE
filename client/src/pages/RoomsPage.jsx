@@ -1,4 +1,4 @@
-import React,{useContext,useEffect,useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button, Typography, Stack } from '@mui/material';
@@ -11,21 +11,18 @@ import useContract from '../context/useContract';
 
 const RoomsPage = () => {
   const classes = useStyles();
-  const {Contract} = useContext(Web3Context);
-  const [rooms, setrooms] = useState([])
+  const { Contract } = useContext(Web3Context);
+  const [rooms, setrooms] = useState([]);
 
-    const{Rooms} = useContract(Contract);
+  const { Rooms } = useContract(Contract);
 
-      useEffect( ()=>{
-        async function get(){
-        const res = await Rooms(Contract);
-        setrooms(res)
-        }
-        get()
-       
-      },[Contract])
-     
-
+  useEffect(() => {
+    async function get() {
+      const res = await Rooms(Contract);
+      setrooms(res);
+    }
+    get();
+  }, [Contract]);
 
   return (
     <>
@@ -40,11 +37,17 @@ const RoomsPage = () => {
         </Link>
       </Stack>
       <div className={classes.container}>
-      {
-      Array.isArray(rooms) && rooms.map((data)=>{
-        const {id,roomOwner,isActive} = data
-        return (isActive&&<RoomCard id={id} roomOwner={roomOwner}/>)})}
-        
+        {Array.isArray(rooms) &&
+          rooms.map((data) => {
+            const { id, roomOwner, isActive } = data;
+            return (
+              isActive && (
+                <Link style={{ textDecoration: 'none' }} to={`/${id}/proposals`}>
+                  <RoomCard id={id} roomOwner={roomOwner} />
+                </Link>
+              )
+            );
+          })}
       </div>
     </>
   );

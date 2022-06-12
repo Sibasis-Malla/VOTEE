@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Web3 from "web3";
 import WriteContract from "./writeContract";
 import ReadContract from "./readContract";
