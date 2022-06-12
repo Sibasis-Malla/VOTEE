@@ -11,24 +11,24 @@ const ProposalPage = () => {
   const classes = useStyles();
   let { room } = useParams();
   //console.log(room);
-  
+
   return (
     <>
       <Stack direction="row" spacing={2} className={classes.header}>
         <Typography variant="h5" className={classes.text} component="div">
           Proposals
         </Typography>
-        <Link style={{ textDecoration: 'none' }} to={`/${room}/create`}>
+        <Link
+          style={{ textDecoration: 'none' }}
+          to={`/${room}/proposals/create`}
+        >
           <Button variant="contained" startIcon={<Add />}>
             Create a Proposal
           </Button>
-          </Link>
-          <Link style={{ textDecoration: 'none' }} to={`/${room}/admin`}>
-          <Button variant="contained" >
-            Admin
-          </Button>
-          </Link>
-     
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to={`/${room}/admin`}>
+          <Button variant="contained">Admin</Button>
+        </Link>
       </Stack>
       <div className={classes.container}>
         <Proposals />

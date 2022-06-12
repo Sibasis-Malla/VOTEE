@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
-import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
-import AllInclusiveIcon from '@mui/icons-material/AllInclusive';
-import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
+import { Groups, HowToReg, Poll } from '@mui/icons-material';
 import { makeStyles } from '@mui/styles';
 
 const HomePage = () => {
@@ -11,49 +9,68 @@ const HomePage = () => {
   const sectionItems = [
     {
       id: 1,
-      icon: <EngineeringOutlinedIcon sx={{ fontSize: 100 }} color="primary" />,
+      icon: <Groups sx={{ fontSize: 100, color: '#232946' }} />,
       sentence:
-        'Solving world problems through various web applications using efficient programs and tools',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
     },
     {
       id: 2,
-      icon: <AllInclusiveIcon sx={{ fontSize: 100 }} color="primary" />,
+      icon: <Poll sx={{ fontSize: 100, color: '#232946' }} />,
       sentence:
-        'Through team work, we collaborate and deliver quality projects of high standards',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
     },
     {
       id: 3,
-      icon: <PaidOutlinedIcon sx={{ fontSize: 100 }} color="primary" />,
-      sentence: 'Flexible payment plan is applicable to all our services',
+      icon: <HowToReg sx={{ fontSize: 100, color: '#232946' }} />,
+      sentence:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
     },
   ];
 
   const guideItems = [
     {
       id: 1,
-      title: 'We build, We revive',
+      title: 'Connect Metamask',
       image:
-        'https://res.cloudinary.com/sambitsankalp/image/upload/v1654866224/hackathons/human-hand-puts-vote-bulletin-into-vote-box-on-the-laptop-screen-vector-id1278554739_mx5tnh.jpg',
+        'https://res.cloudinary.com/sambitsankalp/image/upload/v1655061859/hackathons/31d7da16a4b2e5f56d511972377d75f7_kvq7sd.jpg',
       content:
-        'Your business needs to be in safe hands at all times. We ensure you never run out of customers and not run at loss. We are trusted by over 500+ companies to deliver quality marketing campaigns using Digital marketing & Offline marketing channels.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
       direction: 'row',
     },
     {
       id: 2,
-      title: 'We build, We revive',
+      title: 'Create Rooms',
       image:
-        'https://res.cloudinary.com/sambitsankalp/image/upload/v1654866224/hackathons/human-hand-puts-vote-bulletin-into-vote-box-on-the-laptop-screen-vector-id1278554739_mx5tnh.jpg',
+        'https://res.cloudinary.com/sambitsankalp/image/upload/v1655063242/hackathons/creative-workplace-with-computer-monitor-empty-no-people-cabinet-vector-id1165699436_qdf5yf.jpg',
       content:
-        'Your business needs to be in safe hands at all times. We ensure you never run out of customers and not run at loss. We are trusted by over 500+ companies to deliver quality marketing campaigns using Digital marketing & Offline marketing channels.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
       direction: 'row-reverse',
     },
     {
       id: 3,
-      title: 'We build, We revive',
+      title: 'Add Voters',
+      image:
+        'https://res.cloudinary.com/sambitsankalp/image/upload/v1655062964/hackathons/multinational-team-vector-id1278976564_th7vw5.jpg',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+      direction: 'row',
+    },
+    {
+      id: 4,
+      title: 'Create Proposals',
+      image:
+        'https://res.cloudinary.com/sambitsankalp/image/upload/v1655063650/hackathons/the-startup-garage-website-development-request-for-proposal_kxegtc.jpg',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+      direction: 'row-reverse',
+    },
+    {
+      id: 5,
+      title: 'Start Voting',
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1654866224/hackathons/human-hand-puts-vote-bulletin-into-vote-box-on-the-laptop-screen-vector-id1278554739_mx5tnh.jpg',
       content:
-        'Your business needs to be in safe hands at all times. We ensure you never run out of customers and not run at loss. We are trusted by over 500+ companies to deliver quality marketing campaigns using Digital marketing & Offline marketing channels.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
       direction: 'row',
     },
   ];
@@ -62,32 +79,41 @@ const HomePage = () => {
       <Box className={classes.heroBox}>
         <Grid container spacing={6} className={classes.gridContainer}>
           <Grid item xs={12} md={7}>
-            <Typography variant="h3" fontWeight={700} className={classes.title}>
-              Let's scale your business
+            <Typography
+              variant="h3"
+              fontWeight={700}
+              style={{ color: '#232946' }}
+              className={classes.title}
+            >
+              Vote in your own way
             </Typography>
-            <Typography variant="h6" className={classes.subtitle}>
-              Hire professionals who will help your business make 10X your
-              previous income. With over 5years experience in Marketing &
-              Business strategy, we are your best client.
+            <Typography
+              variant="h6"
+              style={{ color: '#232946' }}
+              className={classes.subtitle}
+            >
+              Start your process by creating a room, write proposals and make
+              your team register as a VOTEE in the room and make your decisions
+              in a smoother and faster way...
             </Typography>
             <Button
               variant="contained"
               color="primary"
               sx={{ width: '200px', fontSize: '16px' }}
             >
-              HIRE US
+              Connect wallet
             </Button>
           </Grid>
           <Grid item xs={12} md={5}>
             <img
-              src="https://res.cloudinary.com/sambitsankalp/image/upload/v1654866205/hackathons/election-referendum-campaign_74855-6386_imrtjl.jpg"
+              src="https://res.cloudinary.com/sambitsankalp/image/upload/v1655060810/hackathons/image_1_bameyw.png"
               alt="My Team"
               className={classes.largeImage}
             />
           </Grid>
         </Grid>
       </Box>
-      <Typography variant="h4" className={classes.formHeading}>
+      <Typography fontWeight={700} variant="h4" className={classes.formHeading}>
         Features
       </Typography>
       <Box sx={{ flexGrow: 1, minHeight: '400px' }}>
@@ -102,12 +128,14 @@ const HomePage = () => {
               className={classes.sectionGridItem}
             >
               {item.icon}
-              <Typography>{item.sentence}</Typography>
+              <Typography style={{ color: '#232946' }}>
+                {item.sentence}
+              </Typography>
             </Grid>
           ))}
         </Grid>
       </Box>
-      <Typography variant="h4" className={classes.formHeading}>
+      <Typography fontWeight={700} variant="h4" className={classes.formHeading}>
         Guides
       </Typography>
       <Box className={classes.aboutUsContainer}>
@@ -126,7 +154,7 @@ const HomePage = () => {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="h4"
-                fontWeight={500}
+                fontWeight={400}
                 className={classes.title}
               >
                 {title}
@@ -176,6 +204,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formHeading: {
     textAlign: 'center',
+    marginTop: '40px',
   },
   heroBox: {
     width: '100%',
@@ -193,6 +222,7 @@ const useStyles = makeStyles((theme) => ({
   },
   aboutUsContainer: {
     width: '100%',
+    padding: '50px',
     display: 'flex',
     minHeight: '400px',
     flexDirection: 'column',
@@ -206,10 +236,12 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     paddingBottom: '15px',
+    color: '#232946',
   },
   subtitle: {
     opacity: '0.4',
     paddingBottom: '30px',
+    color: '#232946',
   },
   largeImage: {
     width: '100%',
@@ -219,12 +251,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    minHeight: '500px',
+    marginTop: '30px',
   },
   sectionGridItem: {
-    backgroundColor: '#f2f0f1',
+    backgroundColor: '#fffffe',
     textAlign: 'center',
-    padding: '30px',
+    padding: '50px 30px',
     width: '200px',
     borderRadius: '10px',
     margin: '10px !important',

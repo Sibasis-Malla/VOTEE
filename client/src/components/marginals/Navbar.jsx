@@ -25,11 +25,17 @@ function Navbar() {
         </Link>
         <Button
           variant="contained"
-          className={classes.tab}
+          style={{ backgroundColor: '#eebbc3', color: '#232946' }}
           startIcon={<Add />}
           onClick={children.connectWallet}
         >
-          Connect to Wallet
+          <Typography
+            className={classes.tab}
+            style={{ color: '#232946' }}
+            variant="body1"
+          >
+            Connect to Wallet
+          </Typography>
         </Button>
       </div>
     </div>
@@ -44,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     height: '70px',
     position: 'fixed',
     top: 0,
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#232946',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -77,7 +83,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tab: {
-    color: '#fff',
+    color: '#fffffe',
     fontFamily: 'Helvetica',
+    marginRight: '20px',
   },
 }));
