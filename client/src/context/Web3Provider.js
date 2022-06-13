@@ -51,7 +51,7 @@ const Web3Provider = ({ children }) => {
 
     const accounts = await ethereum.request({ method: 'eth_accounts' });
     const chain = await window.ethereum.request({ method: 'eth_chainId' });
-    console.log('chain ID:', chain);
+    // console.log('chain ID:', chain);
      setAccount({
         accounts: accounts,
         currentAccount: accounts[0],

@@ -8,7 +8,7 @@ import { Add } from '@mui/icons-material';
 
 function Navbar() {
   const classes = useStyles();
-  const {connectWallet, account} = useContext(Web3Context);
+  const { connectWallet, account } = useContext(Web3Context);
 
   // console.log(children);
 
@@ -27,7 +27,10 @@ function Navbar() {
         </Link>
         {account.currentAccount != null ? (
           <Typography className={classes.tab} variant="body1">
-            Hey, Admin
+            Hey,{' '}
+            {`${String(account.currentAccount).slice(0, 5)}...${String(
+              account.currentAccount
+            ).slice(String(account.currentAccount).length - 5)}`}
           </Typography>
         ) : (
           <Button

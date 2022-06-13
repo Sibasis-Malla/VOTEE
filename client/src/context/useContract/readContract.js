@@ -71,6 +71,14 @@ const ReadContract = (instance) => {
     }).then((values) => values);
   };
 
+  const getRoomOwner = async (instance, roomId) => {
+    if (!instance) {
+      return false;
+    }
+    const { roomOwner } = await instance.methods.RoomList(roomId).call();
+    return roomOwner;
+  };
+
   const getWinningProposal = async (instance, roomId) => {
     const proposals = await getProposals(instance, roomId);
     proposals.sort((a, b) => b.voteCount - a.voteCount);
@@ -95,6 +103,7 @@ const ReadContract = (instance) => {
   return {
     count,
     Rooms,
+    getRoomOwner,
     RoomwhiteList,
     getProposals,
     countVoters,
