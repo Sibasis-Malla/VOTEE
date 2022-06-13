@@ -95,9 +95,9 @@ const useContract = (instance, admin) => {
           throw error
         }
         handleTransaction(event, `✅ ${event.event} !`)
-        if(event.event == "WorkflowStatusChange"){
+        if(event.event === "WorkflowStatusChange"){
           updateStatus(event);
-        } else if(event.event == "VotingSessionEnded"){
+        } else if(event.event === "VotingSessionEnded"){
           document.location.reload()
         } else {
           registerEvent(event);

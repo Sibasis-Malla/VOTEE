@@ -15,7 +15,6 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-    ,
   </Web3Provider>,
   document.getElementById('root')
 );

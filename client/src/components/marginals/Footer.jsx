@@ -25,8 +25,7 @@ export default function StickyFooter({ children }) {
         sx={{
           py: 3,
           px: 2,
-          mt: 10,
-          mb: 0,
+          mt: 'auto',
           textAlign: 'center',
           backgroundColor: '#232946',
         }}
