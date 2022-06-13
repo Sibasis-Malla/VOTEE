@@ -23,9 +23,9 @@ module.exports = {
    
     matic:{
       networkCheckTimeout: 10000,
-      provider: () => new HDWalletProvider(`${key}`,`https://rpc-mumbai.maticvigil.com`),
+      provider: () => new HDWalletProvider(`${key}`,`https://polygon-mumbai.g.alchemy.com/v2/bN4tsY77nTHl6MMUTR0JkSZFIWjIWkrQ`),
       network_id:  80001,     
-      //gas: 20000000,        
+     // gas: 20000000,        
       confirmations: 2,    
       timeoutBlocks: 200, 
       skipDryRun: true     

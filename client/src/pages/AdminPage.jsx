@@ -29,11 +29,11 @@ const AdminPage = () => {
     RoomwhiteList, getCurrentStatus} = useContract(Contract)
     //console.log(Contract);
     const res = getCurrentStatus(Contract,room)
-    const statusArr = ["RegisteringVoters",
-      "ProposalsRegistrationStarted",
-      "ProposalsRegistrationEnded",
-      "VotingSessionStarted",
-      "VotingSessionEnded",]
+    const statusArr = ["Registering Voters",
+      "Proposals Registration Started",
+      "Proposals Registration Ended",
+      "Voting Session Started",
+      "Voting Session Ended",]
       res.then((val)=>setstatus(val))
 
       useEffect(() => {

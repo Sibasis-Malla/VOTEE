@@ -9,12 +9,14 @@ import RoomCard from '../components/Cards/RoomsCard';
 import Web3Context from '../context';
 import useContract from '../context/useContract';
 
+
 const RoomsPage = () => {
   const classes = useStyles();
   const { Contract } = useContext(Web3Context);
   const [rooms, setrooms] = useState([]);
 
   const { Rooms } = useContract(Contract);
+  
 
   useEffect(() => {
     async function get() {

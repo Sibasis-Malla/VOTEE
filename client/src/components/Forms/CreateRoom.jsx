@@ -21,14 +21,6 @@ export default function CreateRoom() {
   };
   const randomNumber = Math.round(Math.random() * 1000000);
   const { Contract, account } = useContext(Web3Context);
-  // const [room, setRoom] = useState(randomNumber);
-  // const [creator, setCreator] = useState(account.currentAccount);
-
-  //Promise.resolve(Contract)
-  // console.log(Contract)
-
-  //const {account,checkIfWalletIsConnected} = useContext(Web3Context);
-
   const { createRoom } = useContract(Contract, account);
 
   return (

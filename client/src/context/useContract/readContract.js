@@ -66,10 +66,10 @@ const ReadContract = (instance) => {
       return false;
     }
     let roomProposals = [];
-    const proposalCount = await instance.methods.RoomList(roomId).proposalIds().call();
+    const {proposalIds} = await instance.methods.RoomList(roomId).call();
     return new Promise(async (resolve) => {
-      for (let i = 0; i <= proposalCount; i++) {
-        const proposal = await instance.methods.RoomList(roomId).proposals(i).call();
+      for (let i = 0; i <= proposalIds ;i++) {
+        const proposal = await instance.methods.getProposals(roomId,i).call();
         if (!!proposal.description.length) {
           roomProposals.push(proposal);
         }
