@@ -85,6 +85,9 @@ contract  Voting  {
 
         return RoomList[roomId].proposals[RoomList[roomId].winningProposalId];
     }
+    function getOwnwer (uint256 roomId) public  view  returns ( address ) {
+        return RoomList[roomId].roomOwner;
+    }
     //Create Rooms
       function createRooms(uint256 id_) public{
         Room memory newRoom;
