@@ -9,14 +9,12 @@ import RoomCard from '../components/Cards/RoomsCard';
 import Web3Context from '../context';
 import useContract from '../context/useContract';
 
-
 const RoomsPage = () => {
   const classes = useStyles();
   const { Contract } = useContext(Web3Context);
   const [rooms, setrooms] = useState([]);
 
   const { Rooms } = useContract(Contract);
-  
 
   useEffect(() => {
     async function get() {
@@ -36,21 +34,28 @@ const RoomsPage = () => {
           <Button variant="contained" startIcon={<Add />}>
             Create a Room
           </Button>
-         
         </Link>
       </Stack>
       <div className={classes.container}>
-        {Array.isArray(rooms) &&
+        {Array.isArray(rooms) ? (
           rooms.map((data) => {
             const { id, roomOwner, isActive } = data;
             return (
               isActive && (
-                <Link style={{ textDecoration: 'none' }} to={`/${id}/proposals`}>
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  to={`/${id}/proposals`}
+                >
                   <RoomCard id={id} roomOwner={roomOwner} />
                 </Link>
               )
             );
-          })}
+          })
+        ) : (
+          <Typography variant="h6" component="div">
+            Create your proposals by clicking "+ CREATE A ROOM"
+          </Typography>
+        )}
       </div>
     </>
   );

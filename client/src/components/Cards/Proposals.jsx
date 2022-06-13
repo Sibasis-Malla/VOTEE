@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   CardActionArea,
@@ -6,30 +6,34 @@ import {
   Typography,
   CardContent,
   Card,
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const Proposals = (props) => {
   const classes = useStyles();
-  const { contract, account, vote,room,count,status } = props;
+  const { contract, account, vote, room, count, status } = props;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 365 }}>
       <CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
+          <Typography
+            gutterBottom
+            sx={{ fontSize: 24 }}
+            variant="h6"
+            component="div"
+          >
             Proposal {props.id}
           </Typography>
-        {status == 4 && <Typography gutterBottom variant="h6" component="div">
-          Final Votes: {count}
-        </Typography>}
-          <Typography gutterBottom variant="h6" component="div">
-            By:{props.owner}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
+          {status == 4 && (
+            <Typography gutterBottom variant="h6" component="h7">
+              Final Votes: {count}
+            </Typography>
+          )}
+          <Typography variant="body2">Proposal By: {props.owner}</Typography>
+          <Typography variant="body2" sx={{ mt: 3 }} color="text.secondary">
             {props.description}
           </Typography>
-         
         </CardContent>
       </CardActionArea>
       <CardActions>
@@ -51,9 +55,9 @@ export default Proposals;
 
 const useStyles = makeStyles({
   button: {
-    width: "100%",
-    display: "flex",
-    justifyItems: "center",
-    alignItems: "center",
+    width: '100%',
+    display: 'flex',
+    justifyItems: 'center',
+    alignItems: 'center',
   },
 });

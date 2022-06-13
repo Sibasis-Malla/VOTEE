@@ -8,7 +8,9 @@ import { Add } from '@mui/icons-material';
 
 function Navbar() {
   const classes = useStyles();
-  const children = useContext(Web3Context);
+  const {connectWallet, account} = useContext(Web3Context);
+
+  // console.log(children);
 
   return (
     <div className={classes.root}>
@@ -23,20 +25,26 @@ function Navbar() {
             Rooms
           </Typography>
         </Link>
-        <Button
-          variant="contained"
-          style={{ backgroundColor: '#eebbc3', color: '#232946' }}
-          startIcon={<Add />}
-          onClick={children.connectWallet}
-        >
-          <Typography
-            className={classes.tab}
-            style={{ color: '#232946' }}
-            variant="body1"
-          >
-            Connect to Wallet
+        {account.currentAccount != null ? (
+          <Typography className={classes.tab} variant="body1">
+            Hey, Admin
           </Typography>
-        </Button>
+        ) : (
+          <Button
+            variant="contained"
+            style={{ backgroundColor: '#eebbc3', color: '#232946' }}
+            startIcon={<Add />}
+            onClick={connectWallet}
+          >
+            <Typography
+              className={classes.tab}
+              style={{ color: '#232946' }}
+              variant="body1"
+            >
+              Connect to Wallet
+            </Typography>
+          </Button>
+        )}
       </div>
     </div>
   );

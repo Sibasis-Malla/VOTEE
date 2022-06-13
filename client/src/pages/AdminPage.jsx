@@ -56,11 +56,16 @@ const AdminPage = () => {
   return (
     <Stack direction="column" spacing={2} className={classes.header}>
       <div>
-        <Typography variant="h5" className={classes.text} component="div">
-          Update Voting Status
-        </Typography>
-        <Typography variant="h8" className={classes.text} component="div">
+        <Typography variant="h6" component="div">
           Current Room Status: {statusArr[status]}
+        </Typography>
+        <Typography
+          variant="h5"
+          sx={{ mt: 5 }}
+          className={classes.text}
+          component="div"
+        >
+          Update Voting Status
         </Typography>
         <Stack direction="row" spacing={2} style={{ marginTop: '15px' }}>
           <Button

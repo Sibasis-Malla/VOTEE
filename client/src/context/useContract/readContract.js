@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const ReadContract = (instance) => {
   const [count, setCount] = useState(0);
@@ -9,47 +9,40 @@ const ReadContract = (instance) => {
     }
     instance.methods.RoomList(id).votersCount().call().then(setCount);
   };
-  const Rooms= async(instance)=>{
+  const Rooms = async (instance) => {
     //console.log(instance)
-    if(!instance) {
+    if (!instance) {
       return null;
     }
     const rooms = await instance.methods.TotalRooms().call();
     return await Promise.all(
       rooms.map(async (roomId) => {
-        const {
-          id,
-          isActive,
-          roomOwner
-        } = await instance.methods.RoomList(roomId).call();
+        const { id, isActive, roomOwner } = await instance.methods
+          .RoomList(roomId)
+          .call();
 
         return {
-          id:id,
-          isActive:isActive,
-          roomOwner:roomOwner
+          id: id,
+          isActive: isActive,
+          roomOwner: roomOwner,
         };
       })
     ).then((values) => values.filter((value) => value.isActive));
+  };
 
-  }
-
-  const RoomwhiteList = async (instance,roomId) => {
+  const RoomwhiteList = async (instance, roomId) => {
     if (!instance) {
       return false;
     }
-    
+
     const Voters = await instance.methods.getVoters(roomId).call();
     //const res = await instance.methods.RoomList(roomId).call();
     //console.log(res.voters)
     return await Promise.all(
-     
       Voters.map(async (address) => {
-        const {
-          
-          isRegistered,
-          _address,
-          hasVoted,
-        } = await instance.methods.getWhiteList(roomId,address).call();
+        const { isRegistered, _address, hasVoted } = await instance.methods
+          .getWhiteList(roomId, address)
+          .call();
         //console.log(_address)
 
         return {
@@ -61,15 +54,15 @@ const ReadContract = (instance) => {
     ).then((values) => values.filter((value) => value.isWhitelisted));
   };
 
-  const getProposals = async (instance,roomId) => {
+  const getProposals = async (instance, roomId) => {
     if (!instance) {
       return false;
     }
     let roomProposals = [];
-    const {proposalIds} = await instance.methods.RoomList(roomId).call();
+    const { proposalIds } = await instance.methods.RoomList(roomId).call();
     return new Promise(async (resolve) => {
-      for (let i = 0; i <= proposalIds ;i++) {
-        const proposal = await instance.methods.getProposals(roomId,i).call();
+      for (let i = 0; i <= proposalIds; i++) {
+        const proposal = await instance.methods.getProposals(roomId, i).call();
         if (!!proposal.description.length) {
           roomProposals.push(proposal);
         }
@@ -78,27 +71,26 @@ const ReadContract = (instance) => {
     }).then((values) => values);
   };
 
-  const getWinningProposal = async (instance,roomId) => {
-    const proposals = await getProposals(instance,roomId);
-    proposals.sort((a,b) => b.voteCount - a.voteCount)
+  const getWinningProposal = async (instance, roomId) => {
+    const proposals = await getProposals(instance, roomId);
+    proposals.sort((a, b) => b.voteCount - a.voteCount);
     return proposals[0];
-  }
-  const getCurrentStatus = async(instance,roomId)=>{
+  };
+  const getCurrentStatus = async (instance, roomId) => {
     if (!instance) {
       return false;
     }
-    const {status} = await instance.methods.RoomList(roomId).call()
+    const { status } = await instance.methods.RoomList(roomId).call();
     return status;
-  }
-  const getVoters = async(instance,roomId)=>{
+  };
+  const getVoters = async (instance, roomId) => {
     if (!instance) {
       return false;
-     
     }
-    const res = await instance.methods.getVoters(roomId).call()
+    const res = await instance.methods.getVoters(roomId).call();
     //console.log(res)
     return res;
-  }
+  };
 
   return {
     count,
@@ -108,7 +100,7 @@ const ReadContract = (instance) => {
     countVoters,
     getWinningProposal,
     getCurrentStatus,
-    getVoters
+    getVoters,
   };
 };
 export default ReadContract;
