@@ -22,7 +22,7 @@ const RoomCard = (props) => {
   }, [account]);
 
   return (
-    <Card>
+    <Card sx={{ maxWidth: 365 }}>
       <CardActionArea>
         <CardMedia
           component="img"

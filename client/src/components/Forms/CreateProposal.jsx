@@ -1,4 +1,4 @@
-import  React,{useState,useContext} from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Button,
   CssBaseline,
@@ -7,12 +7,12 @@ import {
   Typography,
   Container,
 } from '@mui/material';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Web3Context from '../../context';
 import useContract from '../../context/useContract';
 export default function CreateProposal() {
-  const [content,setContent] = useState("");
-  const {room} = useParams()
+  const [content, setContent] = useState('');
+  const { room } = useParams();
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -38,7 +38,16 @@ export default function CreateProposal() {
           Create Proposal
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          Your address : {account.currentAccount}
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            defaultValue={account.currentAccount}
+            name="creator"
+            label="Creator"
+            id="creator"
+            autoComplete="creator"
+          />
           <TextField
             margin="normal"
             required
@@ -56,7 +65,9 @@ export default function CreateProposal() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
-            onClick={()=>addProposal(content,Contract,room,account.currentAccount)}
+            onClick={() =>
+              addProposal(content, Contract, room, account.currentAccount)
+            }
           >
             Create a Proposal
           </Button>

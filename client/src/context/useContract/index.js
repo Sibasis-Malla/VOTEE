@@ -1,13 +1,13 @@
-import { useState, useMemo, useEffect } from "react";
-import Web3 from "web3";
-import WriteContract from "./writeContract";
-import ReadContract from "./readContract";
+import { useState, useMemo, useEffect } from 'react';
+import Web3 from 'web3';
+import WriteContract from './writeContract';
+import ReadContract from './readContract';
 
 const useContract = (instance, admin) => {
   const TRANSACTION_STATUS = {
-    NIL: "null",
-    PENDING: "pending",
-    COMPLETED: "completed",
+    NIL: 'null',
+    PENDING: 'pending',
+    COMPLETED: 'completed',
   };
   const {
     state,
@@ -26,16 +26,25 @@ const useContract = (instance, admin) => {
     vote,
   } = WriteContract(instance, admin);
 
-  const { count, Rooms,RoomwhiteList, getProposals, countVoters, getWinningProposal,getCurrentStatus,getVoters } = ReadContract(instance);
+  const {
+    count,
+    Rooms,
+    RoomwhiteList,
+    getProposals,
+    countVoters,
+    getWinningProposal,
+    getCurrentStatus,
+    getVoters,
+  } = ReadContract(instance);
   const [transactionStatus, setTransactionStatus] = useState({
     status: TRANSACTION_STATUS.NIL,
     event: null,
   });
 
   const [event, setEvent] = useState(null);
-  const [toast, setToast] = useState({ visible: false, message: "" });
+  const [toast, setToast] = useState({ visible: false, message: '' });
   const [status, setStatus] = useState(0);
-  const [eventTxHash, setTxHash] = useState("");
+  const [eventTxHash, setTxHash] = useState('');
 
   const getStatus = async () => {
     if (!instance) {
@@ -44,12 +53,11 @@ const useContract = (instance, admin) => {
     instance.methods
       .status()
       .call()
-      .then(([index]) => setStatus(index))
-
+      .then(([index]) => setStatus(index));
   };
 
   const updateStatus = (data) => setStatus(data.returnValues.newStatus);
-  
+
   const registerEvent = (data) => {
     setTxHash(data.transactionHash);
     setEvent(data.event);
@@ -57,7 +65,7 @@ const useContract = (instance, admin) => {
 
   const displayToast = (message) => {
     setToast({ visible: true, message: message });
-    setTimeout(() => setToast({ visible: false, message: "" }), 2000);
+    setTimeout(() => setToast({ visible: false, message: '' }), 2000);
   };
 
   const handleTransaction = async (data, message) => {
@@ -76,7 +84,7 @@ const useContract = (instance, admin) => {
             event: data.event,
           });
           countVoters();
-          if (data.event !== "WorkflowStatusChange") {
+          if (data.event !== 'WorkflowStatusChange') {
             displayToast(message);
           }
         }, 5000);
@@ -89,20 +97,19 @@ const useContract = (instance, admin) => {
     if (!instance) {
       return false;
     }
-    instance.events.allEvents( {
-      },(error,event)=> {
-        if(error) {
-          throw error
-        }
-        handleTransaction(event, `✅ ${event.event} !`)
-        if(event.event === "WorkflowStatusChange"){
-          updateStatus(event);
-        } else if(event.event === "VotingSessionEnded"){
-          document.location.reload()
-        } else {
-          registerEvent(event);
-        }
-      })
+    instance.events.allEvents({}, (error, event) => {
+      if (error) {
+        throw error;
+      }
+      handleTransaction(event, `✅ ${event.event} !`);
+      if (event.event === 'WorkflowStatusChange') {
+        updateStatus(event);
+      } else if (event.event === 'VotingSessionEnded') {
+        document.location.reload();
+      } else {
+        registerEvent(event);
+      }
+    });
   };
 
   // useEffect(() => {
@@ -137,8 +144,17 @@ const useContract = (instance, admin) => {
       removeProposal,
       getCurrentStatus,
       vote,
-      getVoters
+      getVoters,
     };
-  }, [status, event, transactionStatus, count, currentVoter,eventTxHash, state, toast]);
+  }, [
+    status,
+    event,
+    transactionStatus,
+    count,
+    currentVoter,
+    eventTxHash,
+    state,
+    toast,
+  ]);
 };
 export default useContract;
