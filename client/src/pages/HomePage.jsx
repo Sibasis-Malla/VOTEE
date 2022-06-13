@@ -96,13 +96,6 @@ const HomePage = () => {
               your team register as a VOTEE in the room and make your decisions
               in a smoother and faster way...
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ width: '200px', fontSize: '16px' }}
-            >
-              Connect wallet
-            </Button>
           </Grid>
           <Grid item xs={12} md={5}>
             <img
