@@ -17,7 +17,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 const App = () => {
-  window.ethereum.on('accountsChanged', function (accounts) {
+  window.ethereum&&window.ethereum.on('accountsChanged', function (accounts) {
     setTimeout(window.location.reload(false), 1000);
   });
 
