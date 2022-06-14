@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Button, Typography, Stack } from '@mui/material';
@@ -48,7 +49,7 @@ const ProposalPage = () => {
   ];
   res.then((val) => setstatus(val));
 
-  console.log(win);
+  //console.log(win);
 
   return (
     <>
@@ -110,6 +111,7 @@ const ProposalPage = () => {
                 room={room}
                 count={voteCount}
                 status={status}
+                key = {id}
               />
             );
           })

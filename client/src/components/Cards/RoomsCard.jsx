@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useContext, useEffect } from 'react';
 import {
   Button,
@@ -18,7 +19,7 @@ const RoomCard = (props) => {
   const { account } = useContext(Web3Context);
   useEffect(() => {
     setaccount(account);
-    console.log(Currentaccount);
+    //console.log(Currentaccount);
   }, [account]);
 
   return (

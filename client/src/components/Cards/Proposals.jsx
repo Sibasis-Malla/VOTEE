@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Button,
@@ -26,7 +27,7 @@ const Proposals = (props) => {
             Proposal {props.id}
           </Typography>
           {status == 4 && (
-            <Typography gutterBottom variant="h6" component="h7">
+            <Typography gutterBottom variant="h6">
               Final Votes: {count}
             </Typography>
           )}

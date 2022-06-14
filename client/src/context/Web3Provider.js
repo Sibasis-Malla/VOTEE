@@ -1,9 +1,11 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import Voting from '../contracts/Voting.json';
 import { Web3Context } from './index';
 import Web3 from 'web3';
 
 const Web3Provider = ({ children }) => {
+  //const [chainId,setChain]=useState("")
   const [account, setAccount] = useState({
     accounts: null,
     currentAccount: null,
@@ -48,9 +50,11 @@ const Web3Provider = ({ children }) => {
     } else {
       // console.log('We have the ethereum object');
     }
+    var web3 = new Web3(window.ethereum);
 
     const accounts = await ethereum.request({ method: 'eth_accounts' });
-    const chain = await window.ethereum.request({ method: 'eth_chainId' });
+    const chain = await web3.eth.getChainId()
+    //setChain(chain)
     // console.log('chain ID:', chain);
      setAccount({
         accounts: accounts,
@@ -61,18 +65,18 @@ const Web3Provider = ({ children }) => {
       //const account = accounts[0];
       // console.log('Found an authorized account:', account);
      
-      
-      getContract();
+      //console.log(chain)
+      getContract(chain);
     } else {
       console.log('No authorized account found');
     }
   };
-  const getContract = () => {
+  const getContract = (chain) => {
     //console.log(provider,signer);
     var web3 = new Web3(window.ethereum);
-
+    
     //const networkId = await web3.eth.net.getId();
-    const deployedNetwork = Voting.networks[3];
+    const deployedNetwork = Voting.networks[chain];
 
     const instance = new web3.eth.Contract(
       Voting.abi,

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useMemo } from 'react';
 import WriteContract from './writeContract';
 import ReadContract from './readContract';

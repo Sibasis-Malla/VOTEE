@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import { Groups, HowToReg, Poll } from '@mui/icons-material';

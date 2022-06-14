@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -45,6 +46,7 @@ const RoomsPage = () => {
                 <Link
                   style={{ textDecoration: 'none' }}
                   to={`/${id}/proposals`}
+                  key ={id}
                 >
                   <RoomCard id={id} roomOwner={roomOwner} />
                 </Link>

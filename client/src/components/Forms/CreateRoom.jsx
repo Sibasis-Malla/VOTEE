@@ -38,7 +38,7 @@ export default function CreateRoom() {
           Create Room
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -47,7 +47,7 @@ export default function CreateRoom() {
             name="name"
             autoComplete="name"
             autoFocus
-          />
+          /> */}
           <TextField
             margin="normal"
             required
@@ -68,7 +68,7 @@ export default function CreateRoom() {
             id="room"
             autoComplete="room"
           />
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -78,7 +78,7 @@ export default function CreateRoom() {
             label="Description"
             id="description"
             autoComplete="description"
-          />
+          /> */}
           {/* <label htmlFor="contained-button-file">
             <Input
               accept="image/*"

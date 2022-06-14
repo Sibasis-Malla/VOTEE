@@ -136,8 +136,8 @@ const AdminPage = () => {
               voters.map((data) => {
                 const { address } = data;
                 return (
-                  <>
-                    <ListItem
+                  <div key={address}>
+                    <ListItem 
                       secondaryAction={
                         <IconButton
                           edge="end"
@@ -158,7 +158,7 @@ const AdminPage = () => {
                       <ListItemText primary={address} />
                     </ListItem>
                     <Divider />
-                  </>
+                    </div>
                 );
               })}
           </List>
