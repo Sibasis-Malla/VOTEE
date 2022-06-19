@@ -9,7 +9,7 @@
   <p align="center">
     The official repository for the website of VOTEE
     <br />
-    <a href="votee-six.vercel.app">View Live</a>
+    <a href="https://votee-six.vercel.app/">View Live</a>
     ·
     <a href="https://www.youtube.com/watch?v=0ZJEvmKRGrA">Project Demo</a>
   </p>
