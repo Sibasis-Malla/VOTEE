@@ -12,19 +12,19 @@ const HomePage = () => {
       id: 1,
       icon: <Groups sx={{ fontSize: 100, color: '#232946' }} />,
       sentence:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
+        'Verified Voters are added by room admin. So that any other voter can\'t interrupt the voting process.',
     },
     {
       id: 2,
       icon: <Poll sx={{ fontSize: 100, color: '#232946' }} />,
       sentence:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
+        'Transparency of voting process among all the voters. The voters will be able to see the number of votes their proposal got.',
     },
     {
       id: 3,
       icon: <HowToReg sx={{ fontSize: 100, color: '#232946' }} />,
       sentence:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna.',
+        'Verified Proposals are added by verified VOTEES. The members will be able add their proposal.',
     },
   ];
 
@@ -35,7 +35,7 @@ const HomePage = () => {
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1655061859/hackathons/31d7da16a4b2e5f56d511972377d75f7_kvq7sd.jpg',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+        'MetaMask can be downloaded on Chrome and Firefox, or on iOS and Android if you’re a mobile user. For the purposes of this tutorial, we’ll use the Firefox version, but the instructions will be more or less the same for every platform.',
       direction: 'row',
     },
     {
@@ -44,7 +44,7 @@ const HomePage = () => {
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1655063242/hackathons/creative-workplace-with-computer-monitor-empty-no-people-cabinet-vector-id1165699436_qdf5yf.jpg',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+        'Rooms are the place where verified voters are added to proposal to give votes.In the room, only the creator has the access to change the status of voting. Create a room by clicking "+ Create a Room" button in the Rooms Page.',
       direction: 'row-reverse',
     },
     {
@@ -53,7 +53,7 @@ const HomePage = () => {
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1655062964/hackathons/multinational-team-vector-id1278976564_th7vw5.jpg',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+        'In the Rooms, their is a admin panel where only the admin can go aand add the voters of the rooms who are eligible for voting and creating proposals for the rooms. Add a voter by entering the "Address" of the voter in the "Add Voter" Section.',
       direction: 'row',
     },
     {
@@ -62,7 +62,7 @@ const HomePage = () => {
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1655063650/hackathons/the-startup-garage-website-development-request-for-proposal_kxegtc.jpg',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+        'The proposal can be given by any VOTEEs of the rooms, the outsiders will not be able to give proposal. Create a proposal by clicking "+ Create a Proposal" button in the Proposals Page.',
       direction: 'row-reverse',
     },
     {
@@ -71,7 +71,7 @@ const HomePage = () => {
       image:
         'https://res.cloudinary.com/sambitsankalp/image/upload/v1654866224/hackathons/human-hand-puts-vote-bulletin-into-vote-box-on-the-laptop-screen-vector-id1278554739_mx5tnh.jpg',
       content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pellentesque rhoncus magna. Sed viverra consectetur elit in sagittis. Maecenas ultrices lectus ac risus ultrices, eget malesuada nunc imperdiet. Vivamus lacinia, magna ac bibendum dictum, lorem lorem volutpat sem, a lacinia erat tellus vitae dolor.',
+        'The is the last phase of the whole voting session where the voters will be able to vote the proposed proposals and decide the final proposal which will be a winner.',
       direction: 'row',
     },
   ];
