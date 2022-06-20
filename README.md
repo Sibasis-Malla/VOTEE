@@ -49,6 +49,7 @@ Following technologies and libraries are used for the development of this websit
 - [Truffle](https://trufflesuite.com/)
 - [Material UI](https://mui.com/)
 - [Vercel](https://vercel.com/)
+- [Solidity](https://docs.soliditylang.org/en/v0.8.15/)
 
 ## Getting Started
 
