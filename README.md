@@ -11,7 +11,7 @@
     <br />
     <a href="https://votee-six.vercel.app/">View Live</a>
     ·
-    <a href="https://www.youtube.com/watch?v=0ZJEvmKRGrA">Project Demo</a>
+  
   </p>
 </p>
 
